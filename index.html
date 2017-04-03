@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <title>Hang man</title>
+    <link rel="stylesheet" href="styles.css">
+  </head>
+  <body>
+    <form class="p1form" action="index.html" method="post">
+      <h3 class="p1word">Enter Player 2's word</h3>
+      <input class="p1input" type="text" name="" value="">
+      <button class="p1btn" type="submit" name="button">DONE</button>
+    </form>
+    <div class="container">
+      <div class="gallows">
+        <div class="human">
+          <div class="head"></div>
+          <div class="body"></div>
+          <div class="left-arm"></div>
+          <div class="right-arm"></div>
+          <div class="left-leg"></div>
+          <div class="right-leg"></div>
+        </div>
+        <div class="dashes"></div>
+      </div>
+    </div>
+    <div class="player1">
+      <p class="name" id="p1">Player 1</p>
+      <p class="score">Score: </p><p class="score" id="pointP1">0</p>
+    </div>
+
+    <div class="player2">
+      <p class="name" id="p2">Player 2</p>
+      <p class="score">Score: </p><span class="score" id="pointP2">0</span>
+    </div>
+    <h1>H a n g M a n</h1>
+    <script src="https://code.jquery.com/jquery-3.2.0.min.js" charset="utf-8"></script>
+    <script src="main.js" charset="utf-8"></script>
+  </body>
+</html>
