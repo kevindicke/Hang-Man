@@ -7,8 +7,8 @@
   </head>
   <body>
     <form class="wordform" action="index.html" method="post">
-      <h3 class="word">Enter word</h3>
-      <input class="input" type="text" name="" value="">
+      <!-- <h3 class="word">Enter word</h3> -->
+      <input class="input" type="text" name="" value="" placeholder="Enter word">
       <button class="btn" type="submit" name="button">DONE</button>
     </form>
     <div class="container">
@@ -21,10 +21,13 @@
           <div id="left-leg" class="display"></div>
           <div id="right-leg" class="display"></div>
         </div>
-        <div class="dashes"></div>
+        <!-- <div class="dashes">_ _ _ _ _</div> -->
       </div>
+      <h3 id="urWord">Your word</h3>
+      <div class="dashes"></div>
+      <h3 id="wrong">Wrong letters</h3>
+      <input class="letterInput" type="text" name="" value="" placeholder="Pick a letter">
       <div class="missed"></div>
-      <input class="letterInput" type="text" name="" value="">
     </div>
     <div class="player1">
       <p class="name" id="p1">Player 1</p>

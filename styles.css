@@ -1,124 +1,194 @@
 @import url('https://fonts.googleapis.com/css?family=Audiowide');
-body{
-  margin: 0;
-  background-color: #57939A;
+body {
+    margin: 0;
+    background-color: #57939A;
+    font-family: 'Audiowide', cursive;
 }
-h1{
-  margin-top: 90px;
-  float: right;
-  font-size: 45px;
-  color: white;
-  font-family: 'Audiowide', cursive;
-}
-.gallows{
-  width: 200px;
-  height: 200px;
-  margin: 0 auto;
-}
-.container{
-  width: 1600px;
-  height: 700px;
-  margin: 0 auto
-}
-.word{
-  color: white;
-}
-.wordform{
-  height: 80px;
-  width: 510px;
-  border: 1px solid white;
-  padding: 10px 20px;
-  font-family: 'Audiowide', cursive;
-}
-.player1{
-  display: inline-block;
-  float: left;
-  margin-left: 300px;
-}
-.player2{
-  display: inline-block;
-  float: right;
-  margin-right: 300px;
-}
-.score{
-  display: inline-block;
 
+h1 {
+    margin-top: 90px;
+    float: right;
+    font-size: 45px;
+    color: white;
+    font-family: 'Audiowide', cursive;
 }
-.name{
-  display: inline-block;
-}
-.human{
-  margin: 0 auto;
-  height: 190px;
-  width: 95;
-  position: fixed;
-  top: 300px;
 
+.gallows {
+    width: 200px;
+    height: 200px;
+    margin: 0 auto;
 }
-#head{
-  border: 2px solid white;
-  border-radius: 100%;
-  height: 40px;
-  width: 30px;
-  margin: 0 auto;
-}
-#body{
-  height: 80px;
-  width: 0;
-  border: 1px solid white;
-  margin: 0 auto;
-}
-#left-arm{
-  position: relative;
-  height: 45px;
-  width: 0;
-  border: 1px solid white;
-  transform: rotate(30deg);
-  top: -81px;
-  left: -12px;
-  margin: 0 auto;
-}
-#right-arm{
-  position: relative;
-  height: 45px;
-  width: 0;
-  border: 1px solid white;
-  transform: rotate(-30deg);
-  top: -128px;
-  left: 12px;
-  margin: 0 auto;
-}
-#left-leg{
-  position: relative;
-  height: 45px;
-  width: 0;
-  border: 1px solid white;
-  transform: rotate(30deg);
-  top: -100px;
-  left: -12px;
-  margin: 0 auto;
-}
-#right-leg{
-  position: relative;
-  height: 45px;
-  width: 0;
-  border: 1px solid white;
-  transform: rotate(-30deg);
-  top: -148px;
-  left: 12px;
-  margin: 0 auto;
-}
-.dashes{
-  font-family: 'Audiowide', cursive;
-  color: white;
-  font-size: 30px;
 
+.container {
+    width: 1600px;
+    height: 700px;
+    margin: 0 auto
 }
-.missed{
-  height: 50px;
-  width: 200px;
-  border: 1px solid white;
+
+.word {
+    color: white;
 }
+
+.wordform {
+    height: 100px;
+    width: 500px;
+    padding: 45px 20px 0px;
+    font-family: 'Audiowide', cursive;
+    float: left;
+    background-color: pink;
+}
+
+.player1 {
+    display: inline-block;
+    float: left;
+    margin-left: 300px;
+}
+
+.player2 {
+    display: inline-block;
+    float: right;
+    margin-right: 300px;
+}
+
+.score {
+    display: inline-block;
+}
+
+.name {
+    display: inline-block;
+}
+
+.human {
+    margin: 0 auto;
+    height: 190px;
+    width: 95;
+    position: relative;
+    top: 400px;
+    text-align: center;
+}
+
+#head {
+    border: 2px solid white;
+    border-radius: 100%;
+    height: 40px;
+    width: 30px;
+    margin: 0 auto;
+}
+
+#body {
+    height: 80px;
+    width: 0;
+    border: 1px solid white;
+    margin: 0 auto;
+}
+
+#left-arm {
+    position: relative;
+    height: 45px;
+    width: 0;
+    border: 1px solid white;
+    transform: rotate(30deg);
+    top: -81px;
+    left: -12px;
+    margin: 0 auto;
+}
+
+#right-arm {
+    position: relative;
+    height: 45px;
+    width: 0;
+    border: 1px solid white;
+    transform: rotate(-30deg);
+    top: -128px;
+    left: 12px;
+    margin: 0 auto;
+}
+
+#left-leg {
+    position: relative;
+    height: 45px;
+    width: 0;
+    border: 1px solid white;
+    transform: rotate(30deg);
+    top: -100px;
+    left: -12px;
+    margin: 0 auto;
+}
+
+#right-leg {
+    position: relative;
+    height: 45px;
+    width: 0;
+    border: 1px solid white;
+    transform: rotate(-30deg);
+    top: -148px;
+    left: 12px;
+    margin: 0 auto;
+}
+
+.dashes {
+    font-family: 'Audiowide', cursive;
+    color: white;
+    font-size: 30px;
+    width: 300px;
+    text-align: center;
+    float: right;
+    position: relative;
+    margin-right: 40px;
+}
+
+.missed {
+    height: 100px;
+    width: 300px;
+    background-color: pink;
+    position: relative;
+    float: left;
+    margin-left: 40px;
+    padding: 5px;
+    left: -320px;
+}
+
+
 .display{
   display: none;
+}
+
+#urWord {
+    text-align: center;
+    float: right;
+    position: relative;
+    /*margin-right: 40px;*/
+    right: 450px;
+}
+
+#wrong {
+    position: relative;
+    float: left;
+    margin-left: 40px;
+}
+
+.input {
+  margin-left: 40px;
+    height: 30px;
+    width: 300px;
+    font-size: 25px;
+    font-family: 'Audiowide', cursive;
+}
+
+.btn {
+    position: relative;
+    height: 35px;
+    top: -5px;
+    ;
+}
+
+.letterInput {
+    height: 30px;
+    width: 305px;
+    font-size: 25px;
+    font-family: 'Audiowide', cursive;
+    float: left;
+    position: relative;
+    top: 120px;
+    left: 30px;
 }

@@ -42,6 +42,10 @@ function letterCheck() {
         $('.missed').append('<span>' + $('.letterInput').val() + '</span>')
         score()
     }
+    if ($('.dashes').text() == currentPlayer.word) {
+        switchPlayer()
+        restBoard()
+    }
     $('.letterInput').val('')
     displayParts()
 }
@@ -61,6 +65,7 @@ function displayParts() {
     } else if ($('.missed span').length == 6) {
         $('#right-leg').attr('class', '')
         switchPlayer()
+        restBoard()
     }
 }
 //***************************************************
@@ -74,14 +79,18 @@ function score() {
 function switchPlayer() {
     if (currentPlayer == players.player2) {
         currentPlayer = players.player1
+    } else if (currentPlayer == players.player1) {
+        winnerDisplay()
     }
 }
 //***************************************************
 //Display winner
 function winnerDisplay() {
-    if (players.player1.score && players.player2.score > 0) {
+    if (players.player1.score && players.player2.score >= 0) {
         if (players.player1.score > players.player2.score) {
             console.log('Player 2 wins')
+        } else if (players.player1.score == players.player2.score) {
+            console.log("It's a tie!")
         } else {
             console.log('Player 1 wins')
         }
@@ -91,20 +100,24 @@ function winnerDisplay() {
 //***************************************************
 //Clears board once players are switched
 function restBoard() {
-    $('#head').attr('class', 'none')
-    $('#body').attr('class', 'none')
-    $('#left-arm').attr('class', 'none')
-    $('#right-arm').attr('class', 'none')
-    $('#left-leg').attr('class', 'none')
-    $('#right-leg').attr('class', 'none')
+    $('.missed').empty()
+    $('.input').val('')
+    $('.dashes').empty()
+    $('.wordform').css('display', '')
+    $('#head').attr('class', 'display')
+    $('#body').attr('class', 'display')
+    $('#left-arm').attr('class', 'display')
+    $('#right-arm').attr('class', 'display')
+    $('#left-leg').attr('class', 'display')
+    $('#right-leg').attr('class', 'display')
 
 }
 /*Things to do:
 Changing score...done
 Put player into objects...done
-Switch players
+Switch players...done
 Display winner
-Clear board
+Clear board...done
 Clean up code
 Find/Make gallows
 Finish design
