@@ -121,4 +121,5 @@ Clear board...done
 Clean up code
 Find/Make gallows
 Finish design
+Add focus method to iput field
 */
