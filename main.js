@@ -11,6 +11,10 @@ var players = {
     }
 }
 var currentPlayer = players.player2
+$('.input').focus()
+$('.p2Win').hide()
+$('.p1Win').hide()
+$('.tie').hide()
 //***********************************************
 //Captures inputted word
 $('.btn').on('click', function(evt) {
@@ -88,11 +92,17 @@ function switchPlayer() {
 function winnerDisplay() {
     if (players.player1.score && players.player2.score >= 0) {
         if (players.player1.score > players.player2.score) {
-            console.log('Player 2 wins')
+            $('.main').fadeOut(300)
+            $('.p2Win').slideDown(500)
+            $('.rest').on('click')
         } else if (players.player1.score == players.player2.score) {
-            console.log("It's a tie!")
+            $('.main').fadeOut(300)
+            $('.tie').slideDown(500)
+            $('.rest').on('click')
         } else {
-            console.log('Player 1 wins')
+            $('.main').fadeOut(300)
+            $('.p1Win').slideDown(500)
+            $('.rest').on('click')
         }
         restBoard()
     }
@@ -116,8 +126,9 @@ function restBoard() {
 Changing score...done
 Put player into objects...done
 Switch players...done
-Display winner
+Display winner...done
 Clear board...done
+get New Game btn working
 Clean up code
 Find/Make gallows
 Finish design

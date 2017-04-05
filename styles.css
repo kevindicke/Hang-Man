@@ -10,7 +10,8 @@ h1 {
     float: right;
     font-size: 45px;
     color: white;
-    font-family: 'Audiowide', cursive;
+    top: -60px;
+    position: relative;
 }
 
 .gallows {
@@ -42,12 +43,16 @@ h1 {
     display: inline-block;
     float: left;
     margin-left: 300px;
+    position: relative;
+    top: -50px;
 }
 
 .player2 {
     display: inline-block;
     float: right;
     margin-right: 300px;
+    position: relative;
+    top: -50px;
 }
 
 .score {
@@ -63,7 +68,7 @@ h1 {
     height: 190px;
     width: 95;
     position: relative;
-    top: 400px;
+    top: 350px;
     text-align: center;
 }
 
@@ -148,9 +153,8 @@ h1 {
     left: -320px;
 }
 
-
-.display{
-  display: none;
+.display {
+    display: none;
 }
 
 #urWord {
@@ -168,7 +172,7 @@ h1 {
 }
 
 .input {
-  margin-left: 40px;
+    margin-left: 40px;
     height: 30px;
     width: 300px;
     font-size: 25px;
@@ -191,4 +195,37 @@ h1 {
     position: relative;
     top: 120px;
     left: 30px;
+}
+
+.p2Win {
+    margin: 0;
+    padding: 300px;
+}
+
+.p2Container {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.p1Win {
+    margin: 0;
+    padding: 300px;
+}
+
+.p1Container {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
+}
+
+.tie {
+    margin: 0;
+    padding: 300px;
+}
+
+.tieContainer {
+    width: 400px;
+    height: 200px;
+    margin: 0 auto;
 }
