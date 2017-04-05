@@ -21,3 +21,7 @@
 ##### -Name entry
 ##### -Pick number of rounds player would like to play
 ##### -Sound effects for current and wrong letters
+
+### User story
+
+##### As Player 1 I want to pick a 6 character word that will be difficult for Player 2 solve in 6 guesses. And as Player 2 I would want to do the same.
