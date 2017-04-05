@@ -70,8 +70,14 @@ h1 {
     position: relative;
     top: 350px;
     text-align: center;
+    z-index: 2;
 }
-
+.img{
+  position: fixed;
+  z-index: -1;
+  right: 686px;
+  top: 8px;
+}
 #head {
     border: 2px solid white;
     border-radius: 100%;
