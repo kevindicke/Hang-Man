@@ -1,136 +1,151 @@
+var $nameEntry = $('.nameEntry')
+var $wordEntry = $('.wordEntry')
+var $gameBoard = $('.gameBoard')
+var $winScreen = $('.winScreen')
+// $nameEntry.hide()
+$wordEntry.hide()
+$gameBoard.hide()
+$winScreen.hide()
+var boom = new Audio('boom.wav')
 var players = {
     player1: {
+        name: "",
         score: 0,
-        word: '',
-        point: $('#pointP1')
+        foeName: "",
+        word: "",
+        point: $('.p1Point'),
     },
     player2: {
+        name: "",
         score: 0,
-        word: '',
-        point: $('#pointP2')
+        foeName: "",
+        word: "",
+        point: $('.p2Point'),
     }
 }
-var currentPlayer = players.player2
-$('.input').focus()
-$('.p2Win').hide()
-$('.p1Win').hide()
-$('.tie').hide()
-//***********************************************
-//Captures inputted word
-$('.btn').on('click', function(evt) {
-    evt.preventDefault()
-    $('.wordform').css('display', 'none')
-    currentPlayer.word = $('.input').val()
+var currentPlayer = players.player1
+var currPlayerFoe = players.player2
+
+$('.nameBtn').on('click', function() {
+    players.player1.name = $('.p1Name').val()
+    players.player1.foeName = $('.p2Name').val()
+    players.player2.name = $('.p2Name').val()
+    players.player2.foeName = $('.p1Name').val()
+    $('.currPlayer').text(currentPlayer.name)
+    $('.playerName').text(currentPlayer.foeName)
+    boom.play()
+    $nameEntry.slideUp(100)
+    $wordEntry.slideDown(500)
+})
+$('.wordBtn').on('click', function() {
+    if (currentPlayer == players.player1) {
+        players.player2.word = $('.wordInput').val()
+    } else {
+        players.player1.word = $('.wordInput').val()
+    }
+    $('.p1GameName').text(players.player1.name);
+    $('.p2GameName').text(players.player2.name)
+    $wordEntry.slideUp()
+    $gameBoard.slideDown()
     dashDisplay()
 })
-//**********************************************
-//Displays number of dashed that match word length
+
 function dashDisplay() {
-    for (var i = 0; i < currentPlayer.word.length; i += 1) {
+    for (var i = 0; i < currPlayerFoe.word.length; i += 1) {
         $('.dashes').append('<span> _ </span>')
     }
 }
-//**********************************************
-//Inputs letters in missed box or into word picked
-$('.letterInput').on('keyup change', letterCheck)
+$('.letter').on('click', letterCheck)
 
 function letterCheck() {
-    if (currentPlayer.word.includes($('.letterInput').val())) {
+    if (currPlayerFoe.word.includes($(this).text())) {
         console.log('found match')
-        for (var i = 0; i < currentPlayer.word.length; i += 1) {
-            if (currentPlayer.word[i] == $('.letterInput').val()) {
-                $('.dashes span').eq(i).text($('.letterInput').val())
+        for (var i = 0; i < currPlayerFoe.word.length; i += 1) {
+            if (currPlayerFoe.word[i] == $(this).text()) {
+                $('.dashes span').eq(i).text($(this).text())
+                $(this).css('opacity', '.5')
             }
         }
     } else {
-        $('.missed').append('<span>' + $('.letterInput').val() + '</span>')
+        $(this).css('opacity', '.5')
         score()
     }
-    if ($('.dashes').text() == currentPlayer.word) {
+    if ($('.dashes').text() == currPlayerFoe.word) {
+        resetBoard()
         switchPlayer()
-        restBoard()
     }
-    $('.letterInput').val('')
     displayParts()
 }
-//*************************************************
-//Display body parts on missed lettters
+
 function displayParts() {
-    if ($('.missed span').length == 1) {
+    if (currPlayerFoe.score == 1) {
         $('#head').attr('class', '')
-    } else if ($('.missed span').length == 2) {
+    } else if (currPlayerFoe.score == 2) {
         $('#body').attr('class', '')
-    } else if ($('.missed span').length == 3) {
+    } else if (currPlayerFoe.score == 3) {
         $('#left-arm').attr('class', '')
-    } else if ($('.missed span').length == 4) {
+    } else if (currPlayerFoe.score == 4) {
         $('#right-arm').attr('class', '')
-    } else if ($('.missed span').length == 5) {
+    } else if (currPlayerFoe.score == 5) {
         $('#left-leg').attr('class', '')
-    } else if ($('.missed span').length == 6) {
+    } else if (currPlayerFoe.score == 6) {
         $('#right-leg').attr('class', '')
+        resetBoard()
         switchPlayer()
-        restBoard()
     }
 }
-//***************************************************
-//Score keeping
+
 function score() {
-    currentPlayer.score = currentPlayer.score + 1
-    currentPlayer.point.text(currentPlayer.score)
+    currPlayerFoe.score = currPlayerFoe.score + 1
+    currPlayerFoe.point.text(currPlayerFoe.score)
 }
-//****************************************************
-//Switches player
+
 function switchPlayer() {
-    if (currentPlayer == players.player2) {
-        currentPlayer = players.player1
-    } else if (currentPlayer == players.player1) {
+    if (currentPlayer === players.player1) {
+        $('.currPlayer').text(players.player2.name)
+        $('.playerName').text(players.player1.name)
+        currentPlayer = players.player2
+        currPlayerFoe = players.player1
+    } else {
         winnerDisplay()
     }
 }
-//***************************************************
-//Display winner
-function winnerDisplay() {
-    if (players.player1.score && players.player2.score >= 0) {
-        if (players.player1.score > players.player2.score) {
-            $('.main').fadeOut(300)
-            $('.p2Win').slideDown(500)
-            $('.rest').on('click')
-        } else if (players.player1.score == players.player2.score) {
-            $('.main').fadeOut(300)
-            $('.tie').slideDown(500)
-            $('.rest').on('click')
-        } else {
-            $('.main').fadeOut(300)
-            $('.p1Win').slideDown(500)
-            $('.rest').on('click')
-        }
-        restBoard()
-    }
-}
-//***************************************************
-//Clears board once players are switched
-function restBoard() {
-    $('.missed').empty()
-    $('.input').val('')
+
+function resetBoard() {
+  if(currentPlayer == players.player1){
     $('.dashes').empty()
-    $('.wordform').css('display', '')
+    $('.wordInput').val('')
     $('#head').attr('class', 'display')
     $('#body').attr('class', 'display')
     $('#left-arm').attr('class', 'display')
     $('#right-arm').attr('class', 'display')
     $('#left-leg').attr('class', 'display')
     $('#right-leg').attr('class', 'display')
-
+    $wordEntry.slideDown()
+    $gameBoard.slideUp()
+  }else{
+    winnerDisplay()
+    $('.wordEntry').hide()
+  }
 }
-/*Things to do:
-Changing score...done
-Put player into objects...done
-Switch players...done
-Display winner...done
-Clear board...done
-get New Game btn working
-Clean up code
-Find/Make gallows
-Finish design
-Add focus method to iput field
-*/
+
+function winnerDisplay() {
+    if (players.player1.score && players.player2.score >= 0) {
+        if (players.player1.score > players.player2.score) {
+            $('.playerName').text(players.player2.name)
+            $wordEntry.hide()
+            $gameBoard.slideUp()
+            $winScreen.slideDown()
+        } else if (players.player1.score == players.player2.score) {
+            $('.winner').text("It's a tie!!!")
+            $wordEntry.hide()
+            $gameBoard.slideUp()
+            $winScreen.slideDown()
+        } else {
+            $('.playerName').text(players.player1.name)
+            $wordEntry.hide()
+            $gameBoard.slideUp()
+            $winScreen.slideDown()
+        }
+    }
+}
