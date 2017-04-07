@@ -149,3 +149,30 @@ function winnerDisplay() {
         }
     }
 }
+$('.newGameBtn').on('click', function(){
+  $nameEntry.slideDown()
+  $wordEntry.hide()
+  $gameBoard.hide()
+  $winScreen.hide()
+  players.player1.name = ""
+  players.player1.score = 0
+  players.player1.foeName = ""
+  players.player1.word = ""
+  players.player2.name = ""
+  players.player2.score = 0
+  players.player2.foeName = ""
+  players.player2.word = ""
+  currentPlayer = players.player1
+  currPlayerFoe = players.player2
+  $('.dashes').empty()
+  $('.wordInput').val('')
+  $('#head').attr('class', 'display')
+  $('#body').attr('class', 'display')
+  $('#left-arm').attr('class', 'display')
+  $('#right-arm').attr('class', 'display')
+  $('#left-leg').attr('class', 'display')
+  $('#right-leg').attr('class', 'display')
+  $('.letter').css('opacity', '1')
+  $('.p1Name').val('')
+  $('.p2Name').val('')
+})
