@@ -6,6 +6,7 @@ var $winScreen = $('.winScreen')
 $wordEntry.hide()
 $gameBoard.hide()
 $winScreen.hide()
+$('.p1Name').focus()
 var boom = new Audio('boom.wav')
 var players = {
     player1: {
@@ -164,6 +165,8 @@ $('.newGameBtn').on('click', function(){
   players.player2.word = ""
   currentPlayer = players.player1
   currPlayerFoe = players.player2
+  $('.p1Point').text('0')
+  $('.p2Point').text('0')
   $('.dashes').empty()
   $('.wordInput').val('')
   $('#head').attr('class', 'display')
